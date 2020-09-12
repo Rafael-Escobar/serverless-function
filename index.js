@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 const axios = require("axios");
 exports.handler = async (event, context, callback) => {
     const productId = event.currentIntent.slots["productId"];
-    var productName = '';
+
     const instanceAuth = axios.create({
         baseURL: "https://hiringcoders2.vtexcommercestable.com.br/api/",
         headers: {
@@ -14,48 +14,20 @@ exports.handler = async (event, context, callback) => {
         },
     });
 
-    instanceAuth
-    .get("/catalog/pvt/product/2")
-    .then(({ data }) => {
-        productName = data.Name;
-        const answer = `The product ${productId} is ${productName}`;
-        callback(null, {
-            "dialogAction": {
-                "type": "Close",
-                "fulfillmentState": "Fulfilled", // <-- Required
-                "message": {
-                    "contentType": "PlainText",
-                    "content": answer
-                }
-            }
-        });
-        // return {
-        //     "sessionAttributes": {},
-        //     "dialogAction": {
-        //         "type": "Close",
-        //         "fulfillmentState": "Fulfilled",
-        //         "message": {
-        //             "contentType": "PlainText",
-        //             "content": answer
-        //         }
-        //     }
-        // }
-        // console.log("productName", productName);
-    })
-    .catch((err) => {
-        console.log("err", err);
-        const answer = `We cant found the product ${productId} `;
+    const res = await instanceAuth.get("/catalog/pvt/product/" + productId);
+    const productName = res.data.Name;
+    const answer = `The product ${productId} is ${productName}`;
+    const response = {
+        sessionAttributes: {},
+        dialogAction: {
+            type: "Close",
+            fulfillmentState: "Fulfilled",
+            message: {
+                contentType: "PlainText",
+                content: answer,
+            },
+        },
+    };
 
-        return {
-            "sessionAttributes": {},
-            "dialogAction": {
-                "type": "Close",
-                "fulfillmentState": "Fulfilled",
-                "message": {
-                    "contentType": "PlainText",
-                    "content": answer
-                }
-            }
-        }
-    });
+    callback(null, response);
 };

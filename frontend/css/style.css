@@ -1,0 +1,294 @@
+/* Global css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    html {
+        @font-face {
+        font-display: swap;
+        color: #333333;
+    }
+    }
+    *::-webkit-scrollbar {
+        display: none;
+    }
+
+    body, html, *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    ul {
+       list-style: none; 
+    }
+
+    a{
+        text-decoration: none;
+        color: #fff;
+    }
+
+    input, textarea, button{
+        appearance: none;
+        border: none;
+        outline: none;
+    }
+
+    body{
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #E5E5E5;
+        color: #333333;
+        font-size: 14px;
+    }
+    
+
+/* Layout */
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 1240px;
+        margin: 0 auto;
+        overflow-x: hidden;
+        padding: 20px 0;
+    }
+
+    .main{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+        min-height: 100vh;
+        width: 100vw;
+    }
+    .headline{
+        max-width: 700px;
+        width: 80%;
+    }
+    .sub{
+        margin: 14px 0;
+        width: 250px;
+        border-radius: 4px;
+        border-left: 3px solid #E37373;
+        padding-left: 6px;
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 200px;
+        padding-left: 40px;
+    }
+
+    .animation {
+        display: flex;
+        justify-content: center;
+        max-width: 400px;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .animation svg {
+        max-width: 400px;
+        width: 100%;
+    }
+    #chat{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+    }
+    #conversation{
+        position: relative;
+        width: 80%;
+        height: 400px;
+        border-radius: 14px;
+        box-shadow: 0 0 15px -5px #000;
+        background-color: #eee;
+        overflow: scroll;
+        padding-bottom: 60px;
+    }
+
+    .button__container{
+        display: flex;
+        justify-content: center;
+        margin: 14px 0;
+    }
+    span{
+        height: 20px;
+        margin-left: 8px;
+    }
+    span#send{
+        height: 20px;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+    .button{
+        display: flex;
+        justify-content: center;
+        width: 200px;
+        padding: 14px 26px;
+        background: #FF8282;
+        border-radius: 16px;
+        color: #fff;
+        cursor: pointer;
+        box-shadow: 0 0 15px -5px #000;
+        transition: all 1.2s ease ;
+    }
+    .button:hover{
+        transform: translateY(-5px);
+    }
+
+    .back-home{
+        display: flex;
+        justify-content: flex-start;
+        width: 80%;
+    }
+    .link{
+        position: relative;
+        color: #FF8282;
+        padding: 4px 20px;
+        margin: 10px 0;
+    }
+    .link:after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 30%;
+        height: 2px;
+        width: 50px;
+        background: #FF8282;
+       
+    }
+
+    #initial-message{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #initial-message p{
+       font-size: 2rem;
+       color: gray;
+       margin: 0 4px;
+    }
+
+
+/* Bot Styles */
+    #chatform{
+        margin-top: -60px;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        height: 60px;
+        bottom: -10px;
+        width: 80%;
+        border-radius: 14px;
+        box-shadow: 0 -5px 5px -6px #000;
+        background:#FF8282;
+    }
+    input#wisdom {
+        height: 100%;
+        padding: 4px 4px 4px 24px;
+        font-size: 1em;
+        width: 95%;
+        border-radius: 14px;
+      }
+
+      input::placeholder {
+        color: #ccc;
+        font-style: italic;
+      }
+
+
+      p.userRequest {
+        position: relative;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 14px;
+        padding: 4px 10px 4px 10px;
+        border-radius: 4px;
+        min-height: 50px;
+        min-width: 50px;
+        max-width: 75%;
+        border-radius: 14px;
+        float: right;
+        box-shadow: 0 0 15px -5px #000;
+        background-color: #FF8282;
+      }
+      p.userRequest:before {
+        content: "";
+        border: 14px solid transparent;
+        border-right-color: #FF8282;
+        border-top-right-radius: 50px;
+        right: -4px;
+        bottom: 0;
+        position: absolute;
+      }
+
+      p.lexResponse {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        min-width: 50px;
+        max-width: 75%;
+        margin: 14px;
+        padding: 4px 10px 4px 10px;
+        border-radius: 14px;
+        text-align: left;
+        float: left;
+        background-color: #fff;
+        box-shadow: 0 0 15px -5px #000;
+        font-style: italic;
+      }
+
+      p.lexResponse:before {
+        content: "";
+        border: 14px solid transparent;
+        border-left-color: #fff;
+        border-top-left-radius: 50px;
+        left: -4px;
+        bottom: 0;
+        position: absolute;
+      }
+
+      p.lexError {
+        margin: 4px;
+        padding: 4px 10px 4px 10px;
+        border-radius: 4px;
+        text-align: left;
+        min-width: 50%;
+        max-width: 85%;
+        float: left;
+        background-color: #f77;
+      }
+
+
+      @media screen and (max-width: 1096px) {
+        input#wisdom {
+            width: 90%;
+          }
+          span#send{
+            height: 20px;
+            margin: 0 14px;
+            cursor: pointer;
+        }
+        .animation svg {
+            max-width: 400px;
+            width: 75%;
+        }
+      }
+   

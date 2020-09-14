@@ -1,0 +1,23 @@
+@keyframes item1{
+    from{
+        transform: translateY(0px);
+    }
+    to{
+        transform: translateY(-20px);
+    }
+}
+@keyframes item2{
+    from{
+        transform: translateY(-10px);
+    }
+    to{
+        transform: translateY(20px);
+    }
+}
+
+.item-1{
+    animation: item1 1.2s ease infinite alternate;
+}
+.item-2{
+    animation: item2 1.2s ease infinite alternate;
+}

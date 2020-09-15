@@ -14,6 +14,14 @@ var lexruntime = new AWS.LexRuntime();
 var lexUserId = "serverless-bot";
 var sessionAttributes = {};
 
+var isFirstTimeChat = 0
+document.getElementById("wisdom").addEventListener('focus', ()=>{
+    if(isFirstTimeChat === 0){
+        document.getElementById("wisdom").value ='tell me the products you have...'
+        isFirstTimeChat++
+    }
+})
+ 
 function pushChat() {
     document.getElementById('initial-message').style.display = 'none'
     
@@ -32,7 +40,7 @@ function pushChat() {
     // send it to the Lex runtime
     var params = {
       botAlias: "$LATEST",
-      botName: "productInfo",
+      botName: "productInfoVtex",
       inputText: wisdom,
       userId: lexUserId,
       sessionAttributes: sessionAttributes,

@@ -94,10 +94,27 @@ function showResponse(lexResponse) {
   var responsePara = document.createElement("P");
   responsePara.className = "lexResponse";
   if (lexResponse.message) {
-    responsePara.appendChild(
-      document.createTextNode(lexResponse.message)
-    );
-    responsePara.appendChild(document.createElement("br"));
+      if(lexResponse.message.includes('[') && lexResponse.message.includes(']')){
+            let init = lexResponse.message.indexOf('[') + 1
+            let end = lexResponse.message.indexOf(']') 
+            console.log(init)
+            console.log(end)
+
+            let url = lexResponse.message.substring(init, end)
+            console.log(url)
+            let newString = lexResponse.message
+            console.log(newString.replace(`[${url}]`, "See products!"))
+            conversationDiv.appendChild(document.createElement("br"))
+            conversationDiv.appendChild(document.createElement("br"))
+            conversationDiv.appendChild(document.createElement("br"))
+            responsePara.innerHTML = `${newString.replace(`[${url}]`, `<span><a href=${url} target="_blank" class="chat-link"> See products! </a></span>`)}`
+              responsePara.appendChild(document.createElement("br"));
+      }else{
+        responsePara.appendChild(
+            document.createTextNode(lexResponse.message)
+          );
+          responsePara.appendChild(document.createElement("br"));
+      }
   }
   if (lexResponse.dialogState === "ReadyForFulfillment") {
     responsePara.appendChild(

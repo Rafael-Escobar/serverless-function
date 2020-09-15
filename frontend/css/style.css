@@ -27,6 +27,10 @@
         text-decoration: none;
         color: #fff;
     }
+    a.chat-link{
+        text-decoration: underline;
+        color: #E37373;
+    }
 
     input, textarea, button{
         appearance: none;
@@ -297,7 +301,8 @@
           }
           span#send{
             height: 20px;
-            margin: 0 14px;
+            margin: 0 auto;
+            padding: 0 14px;
             cursor: pointer;
         }
         .animation svg {

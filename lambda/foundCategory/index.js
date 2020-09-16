@@ -19,30 +19,27 @@ exports.handler = async (event, context, callback) => {
     let founded = false;
     let url = '';
     var answer = '';
-    // console.log(res.data);
     if (res.status == 200) {
         answer = `We don't have ${searchCategory} but we have the following category : `;
         if (res.data.length > 1) {
             answer = `We don't have ${searchCategory} but we have the following categories : `;
         }
         res.data.forEach((item) => {
-            if (!founded && item.Title.toLowerCase() === searchCategory.toLowerCase()) {
-                founded = true;
-                url = item.url;
-            }
-            let Category = item.Title;
+            let Category = '';
             if (item.children.length > 0) {
                 let subCategories = item.children.map((items) => {
                     if (!founded && items.Title.toLowerCase() === searchCategory.toLowerCase()) {
                         founded = true;
-                        url = items.url;
+                        url = `[${items.url}]`;
                     }
                     return items.name;
                 });
-                Category += ` like ${subCategories.join(' ,')}`
+                Category += subCategories.join(', ');
             }
-            answer += Category+ " ,";
+            answer += Category.length > 0 ? Category + ", " : '';
+
         })
+        answer += "For more info about the products, please type: Do you have 'Here come the category you want to know about' ?";
 
     } else {
         answer = "Sorry in the moment we don't have any category!"

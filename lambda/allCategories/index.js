@@ -24,15 +24,16 @@ exports.handler = async (event, context, callback) => {
             answer = 'We have the following categories: ';
         }
         res.data.forEach((item) => {
-            let Category = item.Title;
+            let Category = '';
             if (item.children.length > 0) {
                 let subCategories = item.children.map((items) => {
                     return items.name;
                 });
-                Category += ` like ${subCategories.join(' or ')}`
+                Category += subCategories.join(', ');
             }
-            answer += Category+ " ,";
+            answer += Category.length > 0 ? Category + ", " : '';
         })
+        answer += "For more info about the products, please type: Do you have 'Here come the category you want to know about' ?";
 
     } else {
         answer = "Sorry in the moment we don't have any category!"

@@ -75,7 +75,7 @@ We got started configuring Amazons Account and trying to config Amazon Lambda Fu
     /lambda/index.js
     ```
 
-## And about the Team?
+## And about the [Team](https://homeless-squad.netlify.app/)?
 - [Antonio Augusto de Assis](https://github.com/antonio-arcanjo)
 - [Claudio Lira](https://github.com/macindex)
 - [Felipe Prestes](https://github.com/feprestes)

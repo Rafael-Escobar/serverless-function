@@ -4,13 +4,12 @@ exports.handler = async (event, context, callback) => {
     const searchCategory = event.currentIntent.slots["categoryId"];
 
     const instanceAuth = axios.create({
-        baseURL: "https://hiringcoders2.vtexcommercestable.com.br/api/",
+        baseURL: config.url,
         headers: {
             "content-type": "application/json",
             accept: "application/json",
-            "x-vtex-api-appkey": "vtexappkey-hiringcoders2-FGCKLH",
-            "x-vtex-api-apptoken":
-                "BUXUGBCSVZBMEDYDTHONEVQCJKOMVLUPOGLMQSFGZRDCRVBIIVNTZFKFDVKVMQWKEMXYRMMBCIOMRNKNJGDAYAQJVFIVHKTJUTXFYDQWJLRQQXOQKWMGMWLEVNCLEQTR",
+            "x-vtex-api-appkey": config.key,
+            "x-vtex-api-apptoken": config.token,
         },
     });
 

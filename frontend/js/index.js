@@ -4,14 +4,14 @@ document.getElementById("start-chat").addEventListener('click', ()=>{
 })
 
 // Initialize the Amazon Cognito credentials provider
-AWS.config.region = "eu-west-2"; // Região
+AWS.config.region = region; // Região
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-  IdentityPoolId: "eu-west-2:b8cb1351-39b0-4b4c-8977-b397276fba2f",
+  IdentityPoolId: pollId,
 });
 
 var lexruntime = new AWS.LexRuntime();
 // var lexUserId = "chatbot-demo" + Date.now();
-var lexUserId = "serverless-bot";
+var lexUserId = userId;
 var sessionAttributes = {};
 
 var isFirstTimeChat = 0
@@ -39,8 +39,8 @@ function pushChat() {
 
     // send it to the Lex runtime
     var params = {
-      botAlias: "$LATEST",
-      botName: "productInfoVtex",
+      botAlias: botAlias,
+      botName: botName,
       inputText: wisdom,
       userId: lexUserId,
       sessionAttributes: sessionAttributes,
